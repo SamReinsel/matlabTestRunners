@@ -2,24 +2,31 @@ name: Run MATLAB Script on GitHub-Hosted Runner
 on: [push]
 jobs:
   my-job:
-    name: Run MATLAB Script
-    runs-on: ubuntu-latest
+    #name: Run MATLAB Script
+    #runs-on: ubuntu-latest
+    #steps:
+    #  - name: Check out repository
+    #    uses: actions/checkout@v3
+    #  - name: Set up MATLAB
+    #    uses: matlab-actions/setup-matlab@v1
+    #  #- name: Run script
+    #  #  uses: matlab-actions/run-command@v1
+    #  #  with:
+    #  #    command: myscript
+    #  - name: Run tests and generate artifacts
+    #    uses: matlab-actions/run-tests@v1
+    #    with:
+    #      test-results-junit: tests/test-results/results.xml
+    #      code-coverage-cobertura: code-coverage/coverage.xml
+    #  - name: Upload artifacts
+    #    uses: actions/upload-artifact@v3
+    #    with:
+    #      name: my-artifact
+    #      path: tests/test-results/results.xml
+    name: Run MATLAB Build
+    runs-on: self-hosted
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
-      - name: Set up MATLAB
-        uses: matlab-actions/setup-matlab@v1
-      #- name: Run script
-      #  uses: matlab-actions/run-command@v1
-      #  with:
-      #    command: myscript
-      - name: Run tests and generate artifacts
-        uses: matlab-actions/run-tests@v1
-        with:
-          test-results-junit: tests/test-results/results.xml
-          code-coverage-cobertura: code-coverage/coverage.xml
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: my-artifact
-          path: tests/test-results/results.xml
+      - name: Run build
+        uses: matlab-actions/run-build@v1
